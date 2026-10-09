@@ -82,9 +82,10 @@ public class PoligonosApp extends Application {
         final var root = new Pane();
         final var scene = new Scene(root, 800, 600);
 
-        for (final var listaPontos : pontosPoligonos) {
-            root.getChildren().add(criarPoligono(listaPontos));
-        }
+        final var poligonos = pontosPoligonos.stream()
+                .map(this::criarPoligono)
+                .toList();
+        root.getChildren().addAll(poligonos);
 
         final List<String> perimetros = perimetros().stream().map(p -> String.format("%.1f", p)).toList();
         final var label1 = newLabel("Perímetro dos Polígonos: " + perimetros, 500);
