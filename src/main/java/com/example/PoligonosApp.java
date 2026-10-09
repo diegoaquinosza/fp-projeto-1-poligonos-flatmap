@@ -83,14 +83,7 @@ public class PoligonosApp extends Application {
         final var scene = new Scene(root, 800, 600);
 
         for (final var listaPontos : pontosPoligonos) {
-            final var poligono = new Polygon();
-            for (final Point point : listaPontos) {
-                poligono.getPoints().addAll(point.x(), point.y());
-            }
-
-            poligono.setFill(Color.BLUE);
-            poligono.setStroke(Color.BLACK);
-            root.getChildren().add(poligono);
+            root.getChildren().add(criarPoligono(listaPontos));
         }
 
         final List<String> perimetros = perimetros().stream().map(p -> String.format("%.1f", p)).toList();
@@ -111,6 +104,15 @@ public class PoligonosApp extends Application {
         return label;
     }
 
+    private Polygon criarPoligono(final List<Point> pontos) {
+        final var poligono = new Polygon();
+        for (final Point point : pontos) {
+            poligono.getPoints().addAll(point.x(), point.y());
+        }
+        poligono.setFill(Color.BLUE);
+        poligono.setStroke(Color.BLACK);
+        return poligono;
+    }
     /// Descobre o tipo de cada polígono a partir da quantidade de pontos que ele tem.
     /// Se um polígono representado por um elemento na lista [#pontosPoligonos] tiver 4 pontos,
     /// ele é um "Quadrilátero", se tiver 3 é um "Triângulo" e assim por diante.
