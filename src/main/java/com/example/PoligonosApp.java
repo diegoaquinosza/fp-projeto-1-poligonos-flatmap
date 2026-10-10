@@ -114,6 +114,23 @@ public class PoligonosApp extends Application {
         poligono.setStroke(Color.BLACK);
         return poligono;
     }
+
+    /**
+     * Retorna a denominação geométrica de um polígono a partir do total de pontos/lados.
+     *
+     * @param totalPontos quantidade de vértices do polígono
+     * @return nome do polígono ("Triângulo", "Quadrilátero", etc.)
+     */
+    private String classificarPoligono(final int totalPontos) {
+        return switch (totalPontos) {
+            case 3 -> "Triângulo";
+            case 4 -> "Quadrilátero";
+            case 5 -> "Pentágono";
+            case 6 -> "Hexágono";
+            default -> "Polígono";
+        };
+    }
+
     /// Descobre o tipo de cada polígono a partir da quantidade de pontos que ele tem.
     /// Se um polígono representado por um elemento na lista [#pontosPoligonos] tiver 4 pontos,
     /// ele é um "Quadrilátero", se tiver 3 é um "Triângulo" e assim por diante.
