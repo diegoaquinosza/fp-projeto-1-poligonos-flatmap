@@ -145,9 +145,11 @@ public class PoligonosApp extends Application {
     ///
     /// @return uma lista de String indicando se o polígono é um "quadrilátero" (quadrado ou retângulo),
     /// "triângulo", "pentágono", "hexágono" ou apenas um "polígono" geral quando tiver mais de 6 lados.
-    protected List<String> tipoPoligonos(){
-        // TODO Apague esta linha e a próxima e implemente seu código
-        return List.of();
+    protected List<String> tipoPoligonos() {
+        return pontosPoligonos.stream()
+                .flatMap(pontos -> Stream.of(pontos.size()))
+                .map(this::classificarPoligono)
+                .toList();
     }
 
     /// Calcula o perímetro de cada polígono.
