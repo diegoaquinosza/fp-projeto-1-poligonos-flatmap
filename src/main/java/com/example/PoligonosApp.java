@@ -152,6 +152,18 @@ public class PoligonosApp extends Application {
                 .toList();
     }
 
+    /**
+     * Acumula as distâncias entre os vértices de um polígono em ciclo fechado.
+     * Utiliza o último ponto da lista como identidade para garantir o fechamento da figura.
+     *
+     * @param pontos lista contendo os vértices do polígono
+     * @return Point final acumulado contendo o perímetro total acessível via {@link Point#distance()}
+     */
+    private Point calcularPontoPerimetro(final List<Point> pontos) {
+        return pontos.stream()
+                .reduce(pontos.getLast(), Point::new);
+    }
+
     /// Calcula o perímetro de cada polígono.
     /// O perímetro é a soma da distância entre cada [Point] (x,y) do [Polygon].
     /// Se você pensar em um polígono como um quadrado, o perímetro representa a distância que você percorreria
