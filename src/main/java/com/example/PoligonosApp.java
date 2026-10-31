@@ -9,8 +9,6 @@ import javafx.scene.shape.Polygon;
 import javafx.stage.Stage;
 
 import java.util.List;
-import java.util.function.BinaryOperator;
-import java.util.function.Function;
 import java.util.stream.Stream;
 
 /// Uma aplicação desktop (usando a biblioteca [OpenJFX (JavaFX)](http://openjfx.io))
@@ -67,8 +65,6 @@ public class PoligonosApp extends Application {
     );
 
     /// Executa a aplicação.
-    /// Esta é a nova forma de escrever o velho `public static void main(String args[])`
-    /// quando não se tem parâmetros de linha de comando.
     void main() {
         launch();
     }
